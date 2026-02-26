@@ -1,43 +1,37 @@
 ---
-const title = "Privacy Policy | GOSQO AI Chat & Store Assistant";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html>
-<head>
-  <title>{title}</title>
-  <meta name="description" content="Privacy Policy for GOSQO AI Chat & Store Assistant." />
-</head>
-<body>
-<h1>Privacy Policy</h1>
+<BaseLayout title="Privacy Policy | GOSQO" description="Privacy Policy for GOSQO AI Chat & Store Assistant.">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective date: February 26, 2026</p>
 
-<p>Effective date: February 26, 2026</p>
+  <div class="card">
+    <h2>Who We Are</h2>
+    <p>GOSQO AI Chat & Store Assistant is a Shopify application providing AI-powered chat, inbox, and content tools.</p>
 
-<h2>Who We Are</h2>
-<p>GOSQO AI Chat & Store Assistant is a Shopify application that provides AI-powered customer chat, inbox management, and product content optimization tools.</p>
+    <h2>Information We Access</h2>
+    <p>When installed, the app may access store information, products, orders, and customer communication data as needed.</p>
 
-<h2>Information We Access</h2>
-<p>When installed, the app may access certain Shopify store data including store information, products, orders, and customer communication data as required to provide app functionality.</p>
+    <h2>How We Use Information</h2>
+    <ul>
+      <li>Live chat and inbox functionality</li>
+      <li>AI-assisted responses and content suggestions</li>
+      <li>SEO audits and product content analysis</li>
+      <li>Billing and subscription management</li>
+      <li>Security and reliability</li>
+    </ul>
 
-<h2>How We Use Information</h2>
-<ul>
-  <li>Provide live chat and inbox functionality</li>
-  <li>Generate AI-assisted responses and content suggestions</li>
-  <li>Perform SEO audits and product content analysis</li>
-  <li>Support billing and subscription management</li>
-  <li>Maintain system security and reliability</li>
-</ul>
+    <h2>AI Processing</h2>
+    <p>Some data may be processed by third-party AI providers to generate responses and content suggestions.</p>
 
-<h2>AI Processing</h2>
-<p>Some data may be processed by third-party AI service providers solely for the purpose of generating responses and content suggestions.</p>
+    <h2>Data Retention and Deletion</h2>
+    <p>Data is retained only as long as necessary. Upon uninstallation or verified request, associated data is deleted per Shopify requirements.</p>
 
-<h2>Data Retention and Deletion</h2>
-<p>Data is retained only as long as necessary to provide the service. Upon app uninstallation or verified deletion request, associated store data is deleted in accordance with Shopify requirements.</p>
+    <h2>Security</h2>
+    <p>We use reasonable measures including encryption in transit and access controls.</p>
 
-<h2>Security</h2>
-<p>We use reasonable technical and organizational measures to protect data, including encryption in transit and access controls.</p>
-
-<h2>Contact</h2>
-<p>For privacy inquiries, contact: privacy@gosqo.com</p>
-
-</body>
-</html>
+    <h2>Contact</h2>
+    <p>privacy@gosqo.com</p>
+  </div>
+</BaseLayout>

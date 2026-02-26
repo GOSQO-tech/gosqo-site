@@ -1,17 +1,24 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="GOSQO AI Chat & Store Assistant"
+  description="AI chat, inbox support workflows, and product content optimization for Shopify merchants."
+>
+  <h1>GOSQO AI Chat & Store Assistant</h1>
+  <p>
+    AI tools for customer chat and support workflows, plus product content and SEO optimization.
+  </p>
+
+  <div class="card">
+    <h2>What it includes</h2>
+    <ul>
+      <li>AI live chat and chatbot-style responses</li>
+      <li>AI-assisted unified inbox for support</li>
+      <li>Product content optimization and SEO audits</li>
+      <li>Workflow automation for common support tasks</li>
+    </ul>
+    <p class="meta">Support: support@gosqo.com</p>
+  </div>
+</BaseLayout>

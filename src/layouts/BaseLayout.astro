@@ -1,0 +1,317 @@
+---
+const {
+  title = "GOSQO",
+  description = "GOSQO AI Chat & Store Assistant",
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/help", label: "Help" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/changelog", label: "Changelog" },
+];
+
+const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">G</span>
+          <span class="brand-text">GOSQO</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          {nav.map((item) => (
+            <a
+              class={`nav-link ${isActive(item.href) ? "active" : ""}`}
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="header-cta">
+          <a class="btn btn-ghost" href="/help">Get help</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="site-main">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">GOSQO AI Chat & Store Assistant</div>
+          <div class="footer-sub">Support: <a href="mailto:support@gosqo.com">support@gosqo.com</a></div>
+          <div class="footer-sub">Privacy: <a href="mailto:privacy@gosqo.com">privacy@gosqo.com</a></div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer">
+          {nav.map((item) => (
+            <a class="footer-link" href={item.href}>{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} GOSQO</span>
+        <span class="dot">•</span>
+        <span>Built for Shopify merchants</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root{
+    --bg: #0b1220;
+    --panel: rgba(255,255,255,.06);
+    --panel2: rgba(255,255,255,.08);
+    --border: rgba(255,255,255,.12);
+    --text: rgba(255,255,255,.88);
+    --muted: rgba(255,255,255,.65);
+    --muted2: rgba(255,255,255,.52);
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --radius: 16px;
+    --radius2: 22px;
+    --max: 1040px;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    color: var(--text);
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background:
+      radial-gradient(1200px 800px at 20% -10%, rgba(99,102,241,.22), transparent 55%),
+      radial-gradient(900px 700px at 90% 10%, rgba(16,185,129,.18), transparent 55%),
+      radial-gradient(800px 600px at 40% 120%, rgba(59,130,246,.16), transparent 55%),
+      var(--bg);
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+  .container{
+    width: min(var(--max), calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:-999px;
+    top:12px;
+    padding:10px 12px;
+    background: rgba(0,0,0,.7);
+    border:1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+  }
+  .skip-link:focus{ left:16px; z-index: 10; }
+
+  .site-header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: rgba(11,18,32,.55);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+    padding: 14px 0;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight: 700;
+    letter-spacing: .3px;
+  }
+  .brand-mark{
+    width: 34px;
+    height: 34px;
+    display:grid;
+    place-items:center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(99,102,241,.95), rgba(16,185,129,.85));
+    box-shadow: var(--shadow);
+    color: rgba(255,255,255,.95);
+    font-size: 16px;
+  }
+  .brand-text{
+    font-size: 14px;
+    color: rgba(255,255,255,.92);
+  }
+
+  .nav{
+    display:flex;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .nav-link{
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .nav-link:hover{
+    background: rgba(255,255,255,.06);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-link.active{
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.10);
+    color: rgba(255,255,255,.92);
+  }
+
+  .header-cta{ display:flex; align-items:center; gap: 10px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.92);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration:none;
+  }
+  .btn:hover{
+    background: rgba(255,255,255,.12);
+    text-decoration:none;
+  }
+  .btn-ghost{
+    background: transparent;
+    border-color: rgba(255,255,255,.12);
+    color: var(--muted);
+  }
+  .btn-ghost:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+  .site-main{
+    padding: 48px 0 56px;
+  }
+
+  /* Content typography */
+  h1{
+    margin: 0 0 12px;
+    font-size: clamp(28px, 3.2vw, 44px);
+    letter-spacing: -0.02em;
+  }
+  h2{
+    margin: 28px 0 10px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  p{ margin: 10px 0; color: var(--muted); }
+  ul,ol{ margin: 10px 0 10px 20px; color: var(--muted); }
+  li{ margin: 6px 0; }
+
+  .card{
+    margin-top: 18px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: var(--radius2);
+    padding: 18px 18px;
+    box-shadow: 0 14px 36px rgba(0,0,0,.25);
+  }
+  .meta{
+    color: var(--muted2);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .site-footer{
+    margin-top: 40px;
+    padding: 26px 0 18px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    background: rgba(0,0,0,.12);
+    backdrop-filter: blur(10px);
+  }
+  .footer-inner{
+    display:flex;
+    gap: 22px;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap: wrap;
+  }
+  .footer-brand{
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: rgba(255,255,255,.9);
+  }
+  .footer-sub{
+    color: var(--muted);
+    font-size: 14px;
+    margin: 4px 0;
+  }
+  .footer-links{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    justify-content: flex-end;
+  }
+  .footer-link{
+    color: var(--muted);
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+  }
+  .footer-link:hover{
+    border-color: rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    text-decoration:none;
+    color: var(--text);
+  }
+  .footer-bottom{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    justify-content:center;
+    color: var(--muted2);
+    font-size: 13px;
+    padding-top: 14px;
+  }
+  .dot{ opacity: .5; }
+
+  @media (max-width: 720px){
+    .nav{ display:none; } /* чисто и лаконично на мобиле */
+    .header-inner{ justify-content: space-between; }
+  }
+</style>
