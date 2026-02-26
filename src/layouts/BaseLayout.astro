@@ -1,14 +1,18 @@
 ---
 const {
   title = "GOSQO",
-  description = "GOSQO AI Chat & Store Assistant",
+  description = "GOSQO builds Shopify-focused SaaS and web applications.",
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
 
 const nav = [
-  { href: "/", label: "Home" },
+  { href: "/", label: "Company" },
+  { href: "/apps", label: "Apps" },
   { href: "/help", label: "Help" },
+];
+
+const legal = [
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/changelog", label: "Changelog" },
@@ -49,7 +53,8 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
         </nav>
 
         <div class="header-cta">
-          <a class="btn btn-ghost" href="/help">Get help</a>
+          <a class="btn btn-ghost" href="/apps">View apps</a>
+          <a class="btn" href="mailto:support@gosqo.com">Contact</a>
         </div>
       </div>
     </header>
@@ -63,13 +68,14 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-left">
-          <div class="footer-brand">GOSQO AI Chat & Store Assistant</div>
+          <div class="footer-brand">GOSQO</div>
+          <div class="footer-sub">Shopify SaaS & web applications</div>
           <div class="footer-sub">Support: <a href="mailto:support@gosqo.com">support@gosqo.com</a></div>
           <div class="footer-sub">Privacy: <a href="mailto:privacy@gosqo.com">privacy@gosqo.com</a></div>
         </div>
 
         <div class="footer-links" aria-label="Footer">
-          {nav.map((item) => (
+          {legal.map((item) => (
             <a class="footer-link" href={item.href}>{item.label}</a>
           ))}
         </div>
@@ -77,8 +83,6 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
 
       <div class="container footer-bottom">
         <span>© {new Date().getFullYear()} GOSQO</span>
-        <span class="dot">•</span>
-        <span>Built for Shopify merchants</span>
       </div>
     </footer>
   </body>
@@ -227,7 +231,6 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
     padding: 48px 0 56px;
   }
 
-  /* Content typography */
   h1{
     margin: 0 0 12px;
     font-size: clamp(28px, 3.2vw, 44px);
@@ -311,7 +314,7 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
   .dot{ opacity: .5; }
 
   @media (max-width: 720px){
-    .nav{ display:none; } /* чисто и лаконично на мобиле */
+    .nav{ display:none; }
     .header-inner{ justify-content: space-between; }
   }
 </style>
