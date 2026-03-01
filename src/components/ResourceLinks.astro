@@ -1,0 +1,62 @@
+---
+interface ResourceLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  links?: ResourceLink[];
+}
+
+const { title = "Resources", links } = Astro.props;
+
+const defaultResources: ResourceLink[] = [
+  { label: "Privacy Policy", href: "/resources/privacy-policy" },
+  { label: "DPA", href: "/resources/dpa" },
+  { label: "Security & Compliance", href: "/resources/security" },
+  { label: "FAQ", href: "/resources/faq" },
+  { label: "Help Center", href: "/resources/help-center" },
+  { label: "Changelog", href: "/resources/changelog" },
+  { label: "Compliance Audit", href: "/resources/compliance-audit" },
+  { label: "Pre-submission Risks", href: "/resources/pre-submission-risks" },
+];
+
+const list = links && links.length > 0 ? links : defaultResources;
+---
+
+<section class="resource-links card" id="resources">
+  <h2 class="resource-links-title">{title}</h2>
+  <ul class="resource-links-list">
+    {list.map((link) => (
+      <li>
+        <a href={link.href}>{link.label}</a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .resource-links {
+    padding: 1.25rem 1.5rem;
+  }
+  .resource-links-title {
+    margin: 0 0 12px;
+    font-size: 18px;
+  }
+  .resource-links-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  .resource-links-list li a {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .resource-links-list li a:hover {
+    color: var(--text);
+  }
+</style>

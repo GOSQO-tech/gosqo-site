@@ -1,0 +1,51 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/compliance-risks-before-submission.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Pre-submission Risks | GOSQO"
+  description="Compliance risks and checklist before Shopify App Store submission for GOSQO AI Store Manager."
+  html={html}
+  canonical="/resources/pre-submission-risks"
+  relatedLinks={[
+    { label: "Compliance Audit", href: "/resources/compliance-audit" },
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+  ]}
+>
+  <div class="critical-callout card" slot="before-body">
+    <h2 class="critical-callout-title">Critical before submission</h2>
+    <ul class="critical-callout-list">
+      <li><strong>GDPR webhook registration:</strong> Handlers exist and verify HMAC; GDPR topics may not be registered in Shopify. Confirm that <code>customers/data_request</code>, <code>customers/redact</code>, and <code>shop/redact</code> are subscribed (e.g. at install). See <a href="/resources/compliance-audit">Compliance Audit</a> for details. Action: confirm registration.</li>
+    </ul>
+  </div>
+</DocLayout>
+
+<style>
+  .critical-callout {
+    margin-bottom: 1.25rem;
+    border-left: 4px solid rgba(239, 68, 68, 0.8);
+  }
+  .critical-callout-title {
+    margin: 0 0 8px;
+    font-size: 16px;
+  }
+  .critical-callout-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .critical-callout-list code {
+    font-size: 13px;
+    background: var(--panel2);
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+</style>

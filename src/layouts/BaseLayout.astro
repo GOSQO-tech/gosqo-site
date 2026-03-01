@@ -1,24 +1,16 @@
 ---
+import { siteConfig, navLinks, footerLinks } from "../config/site";
+
 const {
   title = "GOSQO",
   description = "GOSQO builds Shopify-focused SaaS and web applications.",
+  canonical,
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
+const canonicalUrl = canonical ? `${siteConfig.siteUrl}${canonical}` : `${siteConfig.siteUrl}${pathname}`;
 
-const nav = [
-  { href: "/", label: "Company" },
-  { href: "/apps", label: "Apps" },
-  { href: "/help", label: "Help" },
-];
-
-const legal = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-  { href: "/changelog", label: "Changelog" },
-];
-
-const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 ---
 
 <!doctype html>
@@ -28,6 +20,11 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
 
@@ -42,7 +39,7 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
         </a>
 
         <nav class="nav" aria-label="Primary">
-          {nav.map((item) => (
+          {navLinks.map((item) => (
             <a
               class={`nav-link ${isActive(item.href) ? "active" : ""}`}
               href={item.href}
@@ -74,7 +71,7 @@ const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWit
         </div>
 
         <div class="footer-links" aria-label="Footer">
-          {legal.map((item) => (
+          {footerLinks.map((item) => (
             <a class="footer-link" href={item.href}>{item.label}</a>
           ))}
         </div>

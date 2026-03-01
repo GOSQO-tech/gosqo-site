@@ -1,0 +1,22 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/compliance-audit.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Compliance Audit | GOSQO"
+  description="Compliance audit baseline for GOSQO AI Store Manager (Shopify App Store and legal)."
+  html={html}
+  canonical="/resources/compliance-audit"
+  relatedLinks={[
+    { label: "Pre-submission Risks", href: "/resources/pre-submission-risks" },
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+    { label: "Security", href: "/resources/security" },
+  ]}
+/>

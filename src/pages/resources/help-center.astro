@@ -1,0 +1,21 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/help-center.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Help Center | GOSQO"
+  description="Getting started, billing, and troubleshooting for GOSQO AI Store Manager."
+  html={html}
+  canonical="/resources/help-center"
+  relatedLinks={[
+    { label: "FAQ", href: "/resources/faq" },
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+  ]}
+/>

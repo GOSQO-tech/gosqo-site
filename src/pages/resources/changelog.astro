@@ -1,0 +1,21 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/changelog.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Changelog | GOSQO"
+  description="Release notes and updates for GOSQO AI Store Manager."
+  html={html}
+  canonical="/resources/changelog"
+  relatedLinks={[
+    { label: "Help Center", href: "/resources/help-center" },
+    { label: "FAQ", href: "/resources/faq" },
+  ]}
+/>

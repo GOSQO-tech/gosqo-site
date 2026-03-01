@@ -1,0 +1,24 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/security.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig, { useSecurityEmail: true });
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Security & Compliance | GOSQO"
+  description="Security and compliance practices for GOSQO AI Store Manager."
+  html={html}
+  showDisclaimer={true}
+  disclaimerProduct="GOSQO AI Store Manager"
+  canonical="/resources/security"
+  relatedLinks={[
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+    { label: "DPA", href: "/resources/dpa" },
+    { label: "FAQ", href: "/resources/faq" },
+  ]}
+/>

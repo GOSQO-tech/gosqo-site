@@ -1,0 +1,22 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/dpa.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Data Processing Addendum (DPA) | GOSQO"
+  description="Data Processing Addendum for GOSQO AI Store Manager."
+  html={html}
+  lastUpdated={siteConfig.policyLastUpdated}
+  canonical="/resources/dpa"
+  relatedLinks={[
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+    { label: "Security & Compliance", href: "/resources/security" },
+  ]}
+/>

@@ -1,0 +1,76 @@
+---
+import type { Product } from "../content/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<div class="app-card card">
+  <div class="app-card-header">
+    <h2 class="app-card-title">{product.name}</h2>
+    <span class="app-card-badge">{product.type}</span>
+  </div>
+  <p class="app-card-desc">{product.shortDescription}</p>
+  <ul class="app-card-features">
+    {product.features.slice(0, 4).map((f) => (
+      <li>{f}</li>
+    ))}
+  </ul>
+  <div class="app-card-ctas">
+    {product.ctas.map((cta) => (
+      <a
+        class={cta.primary ? "btn" : "btn btn-ghost"}
+        href={cta.href}
+      >
+        {cta.label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .app-card {
+    padding: 1.25rem 1.5rem;
+  }
+  .app-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .app-card-title {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .app-card-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .app-card-desc {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .app-card-features {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .app-card-features li {
+    margin: 4px 0;
+  }
+  .app-card-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+</style>

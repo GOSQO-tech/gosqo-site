@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  ctas: { label: string; href: string; primary?: boolean }[];
+}
+
+const { title, subtitle, ctas } = Astro.props;
+---
+
+<section class="product-hero">
+  <h1 class="product-hero-title">{title}</h1>
+  <p class="product-hero-subtitle">{subtitle}</p>
+  <div class="product-hero-ctas">
+    {ctas.map((cta) => (
+      <a
+        class={cta.primary ? "btn" : "btn btn-ghost"}
+        href={cta.href}
+      >
+        {cta.label}
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .product-hero {
+    margin-bottom: 2rem;
+  }
+  .product-hero-title {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 3.2vw, 44px);
+    letter-spacing: -0.02em;
+  }
+  .product-hero-subtitle {
+    margin: 0 0 1.25rem;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .product-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+  }
+</style>

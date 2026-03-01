@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AppCard from "../../components/AppCard.astro";
+import { products } from "../../content/products";
+---
+
+<BaseLayout
+  title="Apps | GOSQO"
+  description="Shopify-focused SaaS applications and web apps: GOSQO AI Store Manager and VIKNO.APP."
+  canonical="/apps"
+>
+  <h1>Apps</h1>
+  <p class="meta">Shopify SaaS and web applications by GOSQO.</p>
+
+  <div class="apps-grid">
+    {products.map((product) => (
+      <AppCard product={product} />
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .apps-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .apps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

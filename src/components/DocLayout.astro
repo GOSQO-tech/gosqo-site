@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  html: string;
+  lastUpdated?: string;
+  relatedLinks?: { label: string; href: string }[];
+  showDisclaimer?: boolean;
+  disclaimerProduct?: string;
+  canonical?: string;
+}
+
+const { title, description, html, lastUpdated, relatedLinks = [], showDisclaimer = false, disclaimerProduct = "GOSQO AI Store Manager", canonical } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <article class="doc-page">
+    {showDisclaimer && (
+      <div class="doc-disclaimer card">
+        <p class="doc-disclaimer-text">
+          This document applies to <strong>{disclaimerProduct}</strong>. For related policies and resources, see:{" "}
+          <a href="/resources/dpa">DPA</a>, <a href="/resources/security">Security & Compliance</a>, <a href="/resources/faq">FAQ</a>.
+        </p>
+      </div>
+    )}
+
+    {lastUpdated && (
+      <p class="doc-meta">Last updated: {lastUpdated}</p>
+    )}
+
+    <slot name="before-body" />
+
+    <div class="doc-body card" set:html={html} />
+
+    {relatedLinks.length > 0 && (
+      <nav class="doc-related card" aria-label="Related resources">
+        <h2 class="doc-related-title">Related</h2>
+        <ul class="doc-related-list">
+          {relatedLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .doc-page {
+    max-width: 720px;
+  }
+  .doc-disclaimer {
+    margin-bottom: 1.25rem;
+  }
+  .doc-disclaimer-text {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .doc-disclaimer-text a {
+    text-decoration: underline;
+  }
+  .doc-meta {
+    color: var(--muted2);
+    font-size: 14px;
+    margin: 0 0 1rem;
+  }
+  .doc-body {
+    padding: 1.5rem 1.75rem;
+  }
+  .doc-body :global(h1) {
+    margin-top: 0;
+  }
+  .doc-body :global(h2) {
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .doc-body :global(h2:first-of-type) {
+    border-top: none;
+    padding-top: 0;
+  }
+  .doc-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .doc-body :global(th),
+  .doc-body :global(td) {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .doc-body :global(th) {
+    background: var(--panel);
+  }
+  .doc-body :global(ul),
+  .doc-body :global(ol) {
+    margin: 0.75rem 0 1rem 1.25rem;
+  }
+  .doc-body :global(li) {
+    margin: 4px 0;
+  }
+  .doc-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .doc-body :global(strong) {
+    color: var(--text);
+  }
+  .doc-related {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+  }
+  .doc-related-title {
+    margin: 0 0 0.5rem;
+    font-size: 16px;
+  }
+  .doc-related-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .doc-related-list li {
+    margin: 4px 0;
+  }
+</style>

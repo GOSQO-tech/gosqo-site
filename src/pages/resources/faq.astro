@@ -1,0 +1,22 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/faq.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="FAQ | GOSQO"
+  description="Frequently asked questions for GOSQO AI Store Manager."
+  html={html}
+  canonical="/resources/faq"
+  relatedLinks={[
+    { label: "Privacy Policy", href: "/resources/privacy-policy" },
+    { label: "Help Center", href: "/resources/help-center" },
+    { label: "DPA", href: "/resources/dpa" },
+  ]}
+/>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProductHero from "../../../components/ProductHero.astro";
+import FeatureGrid from "../../../components/FeatureGrid.astro";
+import { getProductBySlug } from "../../../content/products";
+import { siteConfig } from "../../../config/site";
+
+const product = getProductBySlug("vikno");
+if (!product) throw new Error("Product not found");
+
+const heroCtas = [
+  { label: "Contact / Request demo", href: `mailto:${siteConfig.supportEmail}`, primary: true },
+];
+---
+
+<BaseLayout
+  title={`${product.name} | GOSQO`}
+  description={product.shortDescription}
+  canonical="/apps/vikno"
+>
+  <ProductHero
+    title={product.name}
+    subtitle="CRM for client records, services, scheduling, and bookkeeping. Built for small businesses and service companies."
+    ctas={heroCtas}
+  />
+
+  <section class="card">
+    <h2>Main modules</h2>
+    <ul>
+      <li><strong>Appointments and calendar:</strong> Schedule and manage client appointments.</li>
+      <li><strong>Services:</strong> Define and track services you offer.</li>
+      <li><strong>Clients:</strong> Client records and history.</li>
+      <li><strong>Finance and bookkeeping:</strong> Basic accounting and record-keeping.</li>
+    </ul>
+  </section>
+
+  <FeatureGrid title="For whom" items={["Small businesses", "Service companies", "Teams that need client and appointment management"]} />
+
+  <section class="card">
+    <h2>Contact</h2>
+    <p>For demos or questions: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a></p>
+  </section>
+</BaseLayout>

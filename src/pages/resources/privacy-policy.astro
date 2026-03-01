@@ -1,0 +1,25 @@
+---
+import DocLayout from "../../components/DocLayout.astro";
+import { siteConfig } from "../../config/site";
+import { replacePlaceholders } from "../../lib/replacePlaceholders";
+import { marked } from "marked";
+
+const raw = await import("../../content/resources/privacy-policy.md?raw").then((m) => m.default);
+const content = replacePlaceholders(raw, siteConfig);
+const html = marked.parse(content) as string;
+---
+
+<DocLayout
+  title="Privacy Policy | GOSQO"
+  description="Privacy Policy for GOSQO AI Store Manager (GOSQO Merchant Assistant)."
+  html={html}
+  lastUpdated={siteConfig.policyLastUpdated}
+  showDisclaimer={true}
+  disclaimerProduct="GOSQO AI Store Manager"
+  canonical="/resources/privacy-policy"
+  relatedLinks={[
+    { label: "DPA", href: "/resources/dpa" },
+    { label: "Security & Compliance", href: "/resources/security" },
+    { label: "FAQ", href: "/resources/faq" },
+  ]}
+/>

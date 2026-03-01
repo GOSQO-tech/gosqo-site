@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProductHero from "../../../components/ProductHero.astro";
+import FeatureGrid from "../../../components/FeatureGrid.astro";
+import ResourceLinks from "../../../components/ResourceLinks.astro";
+import { getProductBySlug } from "../../../content/products";
+import { siteConfig } from "../../../config/site";
+
+const product = getProductBySlug("gosqo-ai-store-manager");
+if (!product) throw new Error("Product not found");
+
+const heroCtas = [
+  { label: "View on App Store", href: "#", primary: true },
+  { label: "Resources", href: "#resources", primary: false },
+  { label: "Contact", href: `mailto:${siteConfig.supportEmail}`, primary: false },
+];
+
+const capabilities = [
+  "Live chat with AI-powered replies and unified inbox",
+  "Product copywriter and bulk SEO tools",
+  "Order tracking and support playbooks",
+  "Knowledge base and policy-driven answers",
+  "HMAC-verified webhooks and server-side billing",
+];
+
+const securityLinks = [
+  { label: "Security & Compliance", href: "/resources/security" },
+  { label: "Privacy Policy", href: "/resources/privacy-policy" },
+  { label: "DPA", href: "/resources/dpa" },
+];
+---
+
+<BaseLayout
+  title={`${product.name} | GOSQO`}
+  description={product.shortDescription}
+  canonical="/apps/gosqo-ai-store-manager"
+>
+  <ProductHero
+    title={product.name}
+    subtitle="AI live chat, unified inbox, and product content tools for Shopify. Support customers, automate replies, and optimize product copy and SEO from one place."
+    ctas={heroCtas}
+  />
+
+  <section class="card">
+    <h2>What it does</h2>
+    <p>GOSQO AI Store Manager provides live chat on your storefront with AI-assisted replies, a unified inbox for your team, and tools for product content and SEO. Chat uses your store policies and FAQs; the inbox supports assignment, notes, and AI summaries. Product tools include a copywriter and SEO audit.</p>
+    <ul>
+      <li><strong>Live chat:</strong> Widget on storefront with configurable AI modes (Smart Support, Sales Assistant, Autopilot).</li>
+      <li><strong>Inbox:</strong> All conversations in one place with staff assignment and AI-assisted workflows.</li>
+      <li><strong>AI-assisted workflows:</strong> Product copywriter, SEO audit, and content optimization.</li>
+    </ul>
+  </section>
+
+  <FeatureGrid title="Key capabilities" items={capabilities} />
+
+  <section class="card">
+    <h2>Security & Compliance</h2>
+    <p>We use HMAC verification for webhooks, server-side billing checks, TLS in transit, and rate limiting. Data is scoped by shop and deleted on uninstall and GDPR webhooks. See:</p>
+    <ul>
+      {securityLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </section>
+
+  <ResourceLinks />
+
+  <section class="card">
+    <h2>Changelog</h2>
+    <p>Release notes and updates are published on the <a href="/resources/changelog">Changelog</a> page.</p>
+  </section>
+
+  <section class="card">
+    <h2>Contact</h2>
+    <p>Support and general inquiries: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a></p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const resourceLinks = [
+  { href: "/resources/help-center", label: "Help Center" },
+  { href: "/resources/faq", label: "FAQ" },
+  { href: "/resources/privacy-policy", label: "Privacy Policy" },
+  { href: "/resources/dpa", label: "DPA" },
+  { href: "/resources/security", label: "Security & Compliance" },
+  { href: "/resources/changelog", label: "Changelog" },
+  { href: "/resources/compliance-audit", label: "Compliance Audit" },
+  { href: "/resources/pre-submission-risks", label: "Pre-submission Risks" },
+];
+---
+
+<BaseLayout
+  title="Resources | GOSQO"
+  description="Help, legal, and compliance resources for GOSQO AI Store Manager."
+  canonical="/resources"
+>
+  <h1>Resources</h1>
+  <p class="meta">Help, legal, and compliance documents for GOSQO AI Store Manager.</p>
+
+  <div class="card">
+    <h2>Help / Resources</h2>
+    <ul class="resource-index-list">
+      {resourceLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .resource-index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .resource-index-list li {
+    margin: 8px 0;
+  }
+  .resource-index-list a {
+    font-size: 15px;
+  }
+</style>
