@@ -2,7 +2,7 @@
 
 **Last updated:** [Insert date]
 
-This Privacy Policy describes how **GOSQO** ("we," "our," or "us") collects, uses, stores, and protects information in connection with the GOSQO Merchant Assistant Shopify app ("App"). It applies to merchants who install the App and to end users (e.g. store visitors) whose data is processed through the App. We process data as a service provider to the merchant (the data controller for their store and customer data).
+This Privacy Policy describes how **GOSQO** ("we," "our," or "us") collects, uses, stores, and protects information in connection with the GOSQO AI Store Assistant Shopify app ("App"). It applies to merchants who install the App and to end users (e.g. store visitors) whose data is processed through the App. We process data as a service provider to the merchant (the data controller for their store and customer data).
 
 If you are a merchant, you are responsible for ensuring your own privacy policy and practices comply with applicable law and that you have a lawful basis to use the App and share data with us. By installing or using the App, you agree to this Privacy Policy.
 
@@ -10,7 +10,7 @@ If you are a merchant, you are responsible for ensuring your own privacy policy 
 
 ## 1. Who We Are
 
-The App is operated by **GOSQO** (or the legal entity that owns and operates the GOSQO Merchant Assistant product). For the purpose of data protection law, when we process store or customer data on behalf of a merchant, we act as a processor; the merchant is the controller for that data.
+The App is operated by **GOSQO** (or the legal entity that owns and operates the GOSQO AI Store Assistant product). For the purpose of data protection law, when we process store or customer data on behalf of a merchant, we act as a processor; the merchant is the controller for that data.
 
 **Contact for privacy requests:** [Insert email, e.g. privacy@yourcompany.com]
 

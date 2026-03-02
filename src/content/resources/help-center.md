@@ -1,4 +1,4 @@
-# Help Center — GOSQO Merchant Assistant
+# Help Center — GOSQO AI Store Assistant
 
 Content for your support site or Shopify App Listing Resources. Adjust links and product names to match your branding.
 
@@ -8,7 +8,7 @@ Content for your support site or Shopify App Listing Resources. Adjust links and
 
 ### 1. Install the app
 
-- Install **GOSQO Merchant Assistant** from the Shopify App Store.
+- Install **GOSQO AI Store Assistant** from the Shopify App Store.
 - Approve the requested permissions (e.g. products, orders, customers, policies, app proxy). We use these only to provide chat, copywriter, SEO, and support features.
 
 ### 2. Complete guided setup

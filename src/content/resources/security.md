@@ -1,6 +1,6 @@
 # Security & Compliance
 
-This page describes how the GOSQO Merchant Assistant app handles security and compliance. It is intended for the App Store listing (Resources) and for merchants who need assurance about data protection and Shopify compliance.
+This page describes how the GOSQO AI Store Assistant app handles security and compliance. It is intended for the App Store listing (Resources) and for merchants who need assurance about data protection and Shopify compliance.
 
 We do **not** claim certifications (e.g. SOC 2, ISO 27001) unless we have completed and published them. The following reflects our current technical and organizational practices as implemented in the application.
 

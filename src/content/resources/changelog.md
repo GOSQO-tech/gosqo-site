@@ -1,4 +1,4 @@
-# Changelog — GOSQO Merchant Assistant
+# Changelog — GOSQO AI Store Assistant
 
 All notable changes to the app are documented here. Format: version, date, and categorized updates (Improvements, Fixes, Security updates). This template is suitable for publication on your website or App Store listing.
 

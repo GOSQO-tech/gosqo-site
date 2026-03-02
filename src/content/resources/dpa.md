@@ -1,6 +1,6 @@
 # Data Processing Addendum (DPA)
 
-This Data Processing Addendum ("DPA") is entered into between the **Merchant** (the Shopify store operator who installs the GOSQO Merchant Assistant app) and **GOSQO** ("Processor," "we," "us") and governs the processing of Personal Data by the Processor on behalf of the Merchant in connection with the App.
+This Data Processing Addendum ("DPA") is entered into between the **Merchant** (the Shopify store operator who installs the GOSQO AI Store Assistant app) and **GOSQO** ("Processor," "we," "us") and governs the processing of Personal Data by the Processor on behalf of the Merchant in connection with the App.
 
 By installing or using the App, the Merchant agrees to this DPA. If the Merchant is acting on behalf of a company, they represent that they have authority to bind that company.
 

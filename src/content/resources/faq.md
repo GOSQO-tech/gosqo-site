@@ -1,4 +1,4 @@
-# FAQ — GOSQO Merchant Assistant (App Store Resources)
+# FAQ — GOSQO AI Store Assistant (App Store Resources)
 
 This FAQ is intended for the Shopify App Store listing (Resources) and for merchants considering or using the App.
 
